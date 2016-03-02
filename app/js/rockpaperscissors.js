@@ -1,56 +1,72 @@
 ////////////////////////////////////////////////
 /*   Provided Code - Please Don't Edit   */
 ////////////////////////////////////////////////
-var userChoice = prompt("Do you choose rock, paper or scissors?");
-var computerChoice = Math.random();
-if (computerChoice < 0.34) {
-    computerChoice = "rock";
-} else if(computerChoice <= 0.67) {
-    computerChoice = "paper";
-} else {
-    computerChoice = "scissors";
-} console.log("Computer: " + computerChoice);
+var userChoice;
+var computerChoice;
+var playerWins;
+var computerWins;
 ////////////////////////////////////////////////
 /*           Write Your Code Below            */
 ////////////////////////////////////////////////
 
-var compare = function(choice1,choice2) 
-{
-    if(choice1 === choice2) 
-    {
-       return ("The result is a tie");
-}
-else if(choice1 === "rock") 
-{
-     if(choice2 === "scissors")
-    {
-        return "rock wins";
+var compare = function(choice1,choice2)  {
+     if(choice1 === choice2) {
+       console.log("The result is a tie");
+     }
+else if(choice1 === "rock")  {
+     if(choice2 === "scissors") {
+        playerWins += 1;
+        console.log("Player wins, and has " + playerWins);
+     }
+    else {
+    computerWins +=1;
+    console.log("Computer wins, and has " + computerWins);
     }
-    
-    else{return "paper wins";}
 }
-    else if(choice1 ==="paper")
-{
-if(choice2 ==="rock")
-{
-    return "paper wins";
+
+else if(choice1 ==="paper") {
+    if(choice2 ==="rock") {
+    playerWins += 1;
+    console.log("Player wins, and has " + playerWins);
+    }   
+    else {
+    computerWins +=1;
+    console.log("Computer wins, and has " + computerWins);
+    }
 }
-else{return "scissors wins";}
-}
-else if(choice1 ==="scissors")
-{
-if(choice2 ==="rock")
-{return "rock wins";}
-else{return "scissors wins";}
-}
+
+else if(choice1 ==="scissors") { 
+  if(choice2 ==="rock") {
+    computerWins +=1;
+    console.log("Computer wins, and has " + computerWins);
+    }
+    else{
+    playerWins +=1;
+    console.log("Player wins, and has " + playerWins);}
+    }
 };
-compare(userChoice,computerChoice);
+//compare(userChoice,computerChoice);
 
 function playToFive() {
     console.log("Let's play Rock, Paper, Scissors");
-    var playerWins = 0;
-    var computerWins = 0;
+    playerWins = 0;
+    computerWins = 0;
+     while (playerWins <5 && computerWins <5) {
+    userChoice = prompt("Do you choose rock, paper or scissors?");
+    computerChoice = Math.random();
+     if (computerChoice < 0.34) {
+    computerChoice = "rock";
+    } else if(computerChoice <= 0.67) {
+    computerChoice = "paper";
+    } else {
+    computerChoice = "scissors";
+   } console.log("Computer: " + computerChoice);
+   
+    compare(userChoice,computerChoice);
+}
     // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
     /* YOUR CODE HERE */
     return [playerWins, computerWins];
 }
+
+playToFive(); //play the game
